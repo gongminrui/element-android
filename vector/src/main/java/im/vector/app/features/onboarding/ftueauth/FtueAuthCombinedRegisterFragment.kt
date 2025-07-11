@@ -91,6 +91,8 @@ class FtueAuthCombinedRegisterFragment :
         views.createAccountInput.setOnFocusLostListener(viewLifecycleOwner) {
             viewModel.handle(OnboardingAction.UserNameEnteredAction.Registration(views.createAccountInput.content()))
         }
+
+        views.editServerButton.isVisible = false;
     }
 
     private fun canSubmit(account: CharSequence, password: CharSequence): Boolean {

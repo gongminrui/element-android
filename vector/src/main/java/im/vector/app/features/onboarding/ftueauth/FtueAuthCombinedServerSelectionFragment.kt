@@ -38,6 +38,9 @@ import im.vector.app.features.onboarding.OnboardingFlow
 import im.vector.app.features.onboarding.OnboardingViewEvents
 import im.vector.app.features.onboarding.OnboardingViewState
 import im.vector.lib.strings.CommonStrings
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.matrix.android.sdk.api.failure.isHomeserverUnavailable
 import javax.inject.Inject
 
@@ -66,6 +69,7 @@ class FtueAuthCombinedServerSelectionFragment :
                 updateServerUrl()
             }
         }
+        views.chooseServerInput.isEnabled = false;
         views.chooseServerGetInTouch.debouncedClicks { openUrlInExternalBrowser(requireContext(), getString(im.vector.app.config.R.string.ftue_ems_url)) }
         views.chooseServerSubmit.debouncedClicks { updateServerUrl() }
         (Config.sunsetConfig as? SunsetConfig.Enabled)?.let { config ->
@@ -109,6 +113,7 @@ class FtueAuthCombinedServerSelectionFragment :
         if (views.chooseServerInput.content().isEmpty()) {
             val userUrlInput = state.selectedHomeserver.userFacingUrl?.toReducedUrlKeepingSchemaIfInsecure() ?: viewModel.getDefaultHomeserverUrl()
             views.chooseServerInput.editText().setText(userUrlInput)
+            views.chooseServerText.setText(userUrlInput)
         }
 
         views.chooseServerInput.editText().selectAll()

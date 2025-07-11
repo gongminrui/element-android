@@ -92,9 +92,25 @@
             app:layout_constraintHeight_percent="0.03"
             app:layout_constraintTop_toBottomOf="@id/chooseServerHeaderSubtitle" />
 
+
+        <TextView
+            android:id="@+id/chooseServerText"
+            style="@style/Widget.Vector.TextView.Subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textColor="?vctr_content_secondary"
+            app:layout_constraintBottom_toTopOf="@id/chooseServerCardErrorMas"
+            app:layout_constraintEnd_toEndOf="@id/chooseServerGutterEnd"
+            app:layout_constraintStart_toStartOf="@id/chooseServerGutterStart"
+            app:layout_constraintTop_toBottomOf="@id/titleContentSpacing"
+            tools:text="123" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/chooseServerInput"
             style="@style/Widget.Vector.TextInputLayout.Username"
+            android:visibility="invisible"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/ftue_auth_choose_server_entry_hint"
